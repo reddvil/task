@@ -6,7 +6,7 @@ import { ProductItem, ProductHeadline } from 'components';
 
 // CSS
 // import './ProductsSectionComponent.css';
-import { ICategory, IProduct } from 'types/Product';
+import { ICategory, IProduct } from 'types';
 
 interface ComponentProps {
 	productCategory: ICategory,
@@ -116,7 +116,7 @@ const ProductsSection = ({
 					categoryClicked={ () => console.log('s1') }
 					productCategory={ productCategory }
 				/>
-				<ScrollContainer className="scroller d-flex flex-nowrap">
+				<ScrollContainer className="scroller flex flex-nowrap">
 					{ productCategory.products?.map(product => (
 						<ProductItem
 							key={ product.id }
