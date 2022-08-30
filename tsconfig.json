@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": [ "dom", "dom.iterable", "esnext" ],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +18,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react",
+
+    "baseUrl": "src",
   },
-  "include": [
-    "src"
-  ]
+
+  "include": [ "src/**/*" ],
+  "exclude": [ "node_modules", "build", "scripts", "devops", "docker" ]
 }
