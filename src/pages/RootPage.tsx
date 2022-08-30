@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import { useFetch } from '../hooks/useFetch';
-import { ProductsSection } from '../components';
-import { ICategory } from 'types/Product';
-import SkeletonLoader from '../components/SkeletonLoader/SkeletonLoader';
+import React from 'react';
+import { useApi } from 'hooks';
+import { Header, ProductsSection , SkeletonLoader, Footer} from 'components';
+import { ICategory } from 'types';
 
 function RootPage(props: any) {
 
-	const { data, error, isLoading } = useFetch<ICategory[]>('https://cms.meamacollect.ge/meama-collect/api/client/ka');
+	const { data, error, isLoading } = useApi<ICategory[]>('https://cms.meamacollect.ge/meama-collect/api/client/ka');
 
 	console.log(data, error, isLoading);
 	//get products useeffect
@@ -75,7 +74,8 @@ function RootPage(props: any) {
 	// }, [languagesState]);
 
 	return (
-		<div>
+		<React.Fragment>
+			<Header/>
 			{ isLoading ? (<SkeletonLoader/>) : (
 				data && data.map(category => (
 					<ProductsSection
@@ -86,7 +86,8 @@ function RootPage(props: any) {
 					/>
 				))
 			) }
-		</div>
+			<Footer/>
+		</React.Fragment>
 	);
 }
 
