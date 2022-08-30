@@ -1,4 +1,5 @@
 import { useEffect, useReducer, useRef } from 'react';
+import { axiosCall } from 'api/ajaxCall';
 
 interface State<T> {
 	data?: T
@@ -14,7 +15,7 @@ type Action<T> =
 	| { type: 'fetched'; payload: T }
 	| { type: 'error'; payload: Error }
 
-export function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
+export function useApi<T = unknown>(url?: string, options?: RequestInit): State<T> {
 	const cache = useRef<Cache<T>>({});
 
 	// Used to prevent state update if the component is unmounted
@@ -57,12 +58,12 @@ export function useFetch<T = unknown>(url?: string, options?: RequestInit): Stat
 			}
 
 			try {
-				const response = await fetch(url, options);
-				if (!response.ok) {
-					throw new Error(response.statusText);
-				}
+				const response = await axiosCall(url);
+				// if (!response.) {
+				// 	throw new Error(response.statusText);
+				// }
 
-				const data = (await response.json()) as T;
+				const data = (await response.data) as T;
 				cache.current[url] = data;
 				if (cancelRequest.current) return;
 
