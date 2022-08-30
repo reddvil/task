@@ -3,6 +3,12 @@
 @import "variables";
 @import 'layout';
 
+//tailwind
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
 	height: 100%;
 }
@@ -38,14 +44,14 @@ body {
 	padding: 30px 20px 15px;
 	margin: 10px -25px 0;
 }
-
-.flex-nowrap {
-	flex-wrap: nowrap !important;
-}
-
-.d-flex {
-	display: flex !important;
-}
+//
+//.flex-nowrap {
+//	flex-wrap: nowrap !important;
+//}
+//
+//.d-flex {
+//	display: flex !important;
+//}
 
 
 ////
