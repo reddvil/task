@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICategory } from 'types/Product';
+import { ICategory } from 'types';
 
 // CSS
 // import './ProductsHeadlineComponent.css';

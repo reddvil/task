@@ -1,7 +1,7 @@
 import React from 'react';
 import { mergeClasses } from 'utils';
 
-import { CategoryKind, IProduct } from 'types/Product';
+import { CategoryKind, IProduct } from 'types';
 // import { Utils } from '../../utils/Utils';
 // CSS
 // import './ProductItemLargeComponent.css';
