@@ -1,10 +1,10 @@
 import React from 'react';
 import { mergeClasses } from 'utils';
-
 import { CategoryKind, IProduct } from 'types';
-// import { Utils } from '../../utils/Utils';
-// CSS
-// import './ProductItemLargeComponent.css';
+
+// icons
+import hotDrink from 'assets/hotDrink.svg';
+import coldDrink from 'assets/coldDrink.svg';
 
 interface ComponentProps {
 	product: IProduct;
@@ -18,9 +18,10 @@ const ProductItem = ({
 	productItemClicked
 }: ComponentProps) => {
 
-	// Utils.GetHotOrColdIconByState(product.type)
-	const icon = categoryType === CategoryKind.SMALL ? undefined :
-		(<img className="icon" src={ '' } alt=""/>);
+	const drinkType = product.type === 'HOT' ? hotDrink : coldDrink;
+
+	const icon = product.type === 'DEFAULT' ? undefined :
+		(<img className="icon" src={ drinkType } alt="drinkTypeIcon"/>);
 
 	const bg = categoryType === CategoryKind.SMALL ? undefined :
 		(<div className="bg" style={ { backgroundColor: product.bgColor?.toString() } }></div>);
@@ -33,7 +34,7 @@ const ProductItem = ({
 					'product-item-large': categoryType === 'LARGE',
 					'product-item-medium': categoryType === 'MEDIUM',
 					'product-item-small': categoryType === 'SMALL',
-				}, 'product-item show', `prodItem-${product.id}`)
+				},'product-item show', `prodItem-${product.id}`)
 			}
 		>
 			<div className="inner">
