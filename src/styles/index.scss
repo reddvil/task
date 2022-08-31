@@ -48,10 +48,9 @@ body {
 //Skeleton
 
 .shimmer {
-	border: 1px solid red;
 	position: relative;
 	margin-top: 40px;
-	opacity: 0;
+	opacity: 1;
 	transform: translateY(20px);
 	transition: opacity .5s, transform .5s;
 }
