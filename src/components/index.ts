@@ -15,3 +15,6 @@ export { default as SkeletonLoader } from './SkeletonLoader/SkeletonLoader';
 
 //Footer
 export { default as Footer } from './Footer/Footer';
+
+//ProductDetails
+export { default as ProductDetails } from './ProductDetails/ProductDetails';
