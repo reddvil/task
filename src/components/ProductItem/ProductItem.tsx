@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { mergeClasses } from 'utils';
 import { CategoryKind, IProduct } from 'types';
 
 // icons
 import hotDrink from 'assets/hotDrink.svg';
 import coldDrink from 'assets/coldDrink.svg';
+
+//css
+import './productItem.scss';
 
 interface ComponentProps {
 	product: IProduct;
@@ -21,10 +24,10 @@ const ProductItem = ({
 	const drinkType = product.type === 'HOT' ? hotDrink : coldDrink;
 
 	const icon = product.type === 'DEFAULT' ? undefined :
-		(<img className="icon" src={ drinkType } alt="drinkTypeIcon"/>);
+		(<img className="product-item__icon" src={ drinkType } alt="drinkTypeIcon"/>);
 
 	const bg = categoryType === CategoryKind.SMALL ? undefined :
-		(<div className="bg" style={ { backgroundColor: product.bgColor?.toString() } }></div>);
+		(<div className="product-item__bg" style={ { backgroundColor: product.bgColor?.toString() } }></div>);
 
 	return (
 		<div
@@ -37,19 +40,19 @@ const ProductItem = ({
 				},'product-item show', `prodItem-${product.id}`)
 			}
 		>
-			<div className="inner">
+			<div className="product-item__inner">
 				{ bg }
 				{ icon }
-				<div className="img-box">
-					<div className="img">
+				<div className="product-item__img-box">
+					<div className="product-item_img">
 						<img src={ product.mainPhoto } alt="Product Main Photo"/>
 					</div>
 				</div>
-				<div className="info">
+				<div className="product-item__info">
 					<p>{ product.name }</p>
 					{
 						product.price &&
-						<div className="price f-bold">{ product.price }&#8382;</div>
+						<div className="product-item__price f-bold">{ product.price }&#8382;</div>
 					}
 				</div>
 			</div>
@@ -57,4 +60,5 @@ const ProductItem = ({
 	);
 };
 
-export default ProductItem;
+ProductItem.displayName = 'Meama.Product.Item';
+export default memo<ComponentProps>(ProductItem);
