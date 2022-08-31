@@ -1,0 +1,29 @@
+.not-found {
+	padding: 85px 30px 50px 30px;
+	background-color: #fafafa;
+	text-align: center;
+	max-height: 100vh;
+	overflow: auto;
+	box-sizing: border-box;
+	h2 {
+		font-size: 30px;
+		color: #000;
+	}
+	p {
+		font-size: 14px;
+		color: #000;
+		margin-top: 4px;
+	}
+	.button {
+		width: 210px;
+		padding: 10px;
+		margin: 40px auto 0 auto;
+		background-color: #000;
+		border-radius: 25px;
+		text-align: center;
+		font-size: 14px;
+		color: #fff;
+		line-height: 50px;
+		cursor: pointer;
+	}
+}
