@@ -1,8 +1,11 @@
 import axios from 'axios';
-
+import { MEAMAURL } from 'api/remoteUrls';
 export const axiosCall = axios.create();
 
 export const CancelToken = axios.CancelToken;
+
+// https://cms.meamacollect.ge/meama-collect/api/client
+axiosCall.defaults.baseURL = MEAMAURL.baseURL;
 
 axiosCall.interceptors.response.use(
 	result => result,
