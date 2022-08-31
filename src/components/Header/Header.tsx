@@ -28,14 +28,14 @@ const Header = (props: HeaderProps) => {
 				<span style={ headerBg }></span>
 			</div>
 			<div className="container">
-				<div className="row no-gutters">
-					<div className="col-4 flex items-start" style={ {zIndex:999} }>
+				<div className="flex">
+					<div className="flex items-start" style={ {zIndex:999} }>
 						<div className="header__logo">
 							<img src={ logoSrc } alt=""/>
 						</div>
 					</div>
-					<div className="col-4 flex items-start justify-end">
-						{ /*<LangButtonComponent languages={ languages } languageClicked={ languageClicked }/>*/ }
+					<div className="flex items-start justify-end">
+						<button className="lang">Lang Btn</button>
 					</div>
 				</div>
 			</div>
