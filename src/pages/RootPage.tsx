@@ -1,13 +1,14 @@
 import React from 'react';
 import { useApi } from 'hooks';
 import { Header, ProductsSection , SkeletonLoader, Footer} from 'components';
+import { mergeClasses } from 'utils';
 import { ICategory } from 'types';
 
-function RootPage(props: any) {
+function RootPage() {
 
-	const { data, error, isLoading } = useApi<ICategory[]>('https://cms.meamacollect.ge/meama-collect/api/client/ka');
+	const { data: productCategories, error, isLoading } = useApi<ICategory[]>('/ka');
 
-	console.log(data, error, isLoading);
+	console.log(productCategories, error, isLoading);
 	//get products useeffect
 	//within this useffect if we dont have languages  it will go out
 	//whenever language state changes this will change as well
@@ -77,12 +78,12 @@ function RootPage(props: any) {
 		<React.Fragment>
 			<Header/>
 			{ isLoading ? (<SkeletonLoader/>) : (
-				data && data.map(category => (
+				productCategories && productCategories.map(category => (
 					<ProductsSection
 						key={ category.id }
 						productClicked={ () => console.log('click') }
 						productCategory={ category }
-						typeClass={ category.sortIndex === 0 ? 'first' :'' }
+						productTypeClass={ mergeClasses({ first: category.sortIndex === 0 }) }
 					/>
 				))
 			) }
