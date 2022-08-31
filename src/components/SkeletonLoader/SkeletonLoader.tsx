@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const SkeletonLoader = () => {
 	return (
@@ -47,4 +47,6 @@ const SkeletonLoader = () => {
 	);
 };
 
-export default SkeletonLoader;
+
+SkeletonLoader.displayName = 'Meama.SkeletonLoader';
+export default memo(SkeletonLoader);
