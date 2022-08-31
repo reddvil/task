@@ -52,7 +52,7 @@ const ProductItem = ({
 					<p>{ product.name }</p>
 					{
 						product.price &&
-						<div className="product-item__price f-bold">{ product.price }&#8382;</div>
+						<div className="product-item__price">{ product.price }&#8382;</div>
 					}
 				</div>
 			</div>
