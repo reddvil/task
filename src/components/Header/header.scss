@@ -1,12 +1,12 @@
-.header-component {
+.header {
 	position: relative;
 	padding: 25px 0;
 	transition: transform .8s cubic-bezier(0.51, 0.36, 0.22, 1);
-	.bg {
+	.header__bg {
 		position: absolute;
 		top: 0;
 		left: 50%;
-		width: 97vw;
+		width: 100vw;
 		height: 310px;
 		background-color: #000;
 		pointer-events: none;
@@ -27,9 +27,10 @@
 			margin: 0 auto;
 		}
 	}
-	.logo {
+	.header__logo {
 		width: 80px;
 		opacity: 1;
+		z-index: 9;
 		transition: opacity .6s .1s;
 	}
 	.news-btn {
@@ -46,16 +47,16 @@
 	}
 }
 body.visible-product-detail {
-	.header-component {
+	.header {
 		transform: translateY(-100px);
 	}
 }
 body.animating {
-	.header-component {
-		.bg {
+	.header {
+		.header__bg {
 			opacity: 1;
 		}
-		.logo {
+		.header__logo {
 			opacity: 1;
 		}
 		.news-btn {
@@ -64,15 +65,15 @@ body.animating {
 	}
 }
 @media (max-width: 1024px) {
-	.header-component {
-		.bg {
+	.header {
+		.header__bg {
 			width: 100vw;
 		}
 	}
 }
 @media (max-width: 1023.98px) and (max-height: 499.98px) {
-	.header-component {
-		.bg {
+	.header {
+		.header__bg {
 			span {
 				max-width: 100%;
 			}
