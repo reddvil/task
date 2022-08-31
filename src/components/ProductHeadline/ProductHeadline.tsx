@@ -17,7 +17,7 @@ const ProductsHeadline = ({
 
 	return (
 		<div className="products-headline">
-			<h2 className="f-lgv">{ productCategory.name }</h2>
+			<h2>{ productCategory.name }</h2>
 			{ productCategory.subCategories && (
 				<div className="products-headline__filter">
 					{ productCategory?.subCategories?.map(subCategory => (
