@@ -15,6 +15,7 @@ type Action<T> =
 	| { type: 'fetched'; payload: T }
 	| { type: 'error'; payload: Error }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function useApi<T = unknown>(url?: string, options?: RequestInit): State<T> {
 	const cache = useRef<Cache<T>>({});
 
