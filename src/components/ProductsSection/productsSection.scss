@@ -1,0 +1,24 @@
+.products-section {
+	position: relative;
+	margin-top: 40px;
+	transition: transform .8s cubic-bezier(0.51, 0.36, 0.22, 1);
+	.scroller {
+		overflow: auto;
+		white-space: nowrap;
+		padding: 30px 20px 15px 20px;
+		margin: 10px -25px 0 -25px;
+		.white-space {
+			width: 20px;
+			min-width: 20px;
+			height: 20px;
+			pointer-events: none;
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}
+body.visible-product-detail {
+	.products-section {
+		transform: translateY(-100px);
+	}
+}
