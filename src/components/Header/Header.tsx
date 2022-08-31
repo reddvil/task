@@ -1,44 +1,40 @@
-import React from 'react';
+import React, { memo } from 'react';
 // import LangButtonComponent from '../langButton/LangButtonComponent';
 // import { Link } from 'react-router-dom';
 
 // CSS
 import './header.scss';
 
-// Images
-// import patternSrc from '../../assets/img/pattern.png';
 import logoSrc from 'assets/logo.svg';
 // import { Language } from '../../models/Language';
 // import { useTranslation } from 'react-i18next';
 import { useApi } from 'hooks';
 
-interface HeaderComponentsProps {
+type HeaderProps = {
 	languageClicked?: () => void;
 	// languages:Language[]
 }
 
-const Header:React.FC<HeaderComponentsProps> = (props :any) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Header = (props: HeaderProps) => {
 
-	const { data: backgroundImage, isLoading } = useApi<any>('https://cms.meamacollect.ge/meama-collect/api/client/get-background-image');
+	const { data: backgroundImage } = useApi<string>('/get-background-image');
+	const headerBg = { backgroundImage: 'url('+ backgroundImage + ')' };
 	// const {t} = useTranslation();
 
-	console.log(backgroundImage,isLoading);
-
-
 	return (
-		<div className="header-component">
-			<div className="bg">
-				<span style={ { backgroundImage: 'url('+ backgroundImage + ')' } }></span>
+		<div className="header">
+			<div className="header__bg">
+				<span style={ headerBg }></span>
 			</div>
 			<div className="container">
 				<div className="row no-gutters">
 					<div className="col-4 flex items-start" style={ {zIndex:999} }>
-						<div className="logo">
+						<div className="header__logo">
 							<img src={ logoSrc } alt=""/>
 						</div>
 					</div>
-					<div className="col-4 flex items-start justify-end" style={ {zIndex:999} }>
-						<button>lang</button>
+					<div className="col-4 flex items-start justify-end">
 						{ /*<LangButtonComponent languages={ languages } languageClicked={ languageClicked }/>*/ }
 					</div>
 				</div>
@@ -47,4 +43,5 @@ const Header:React.FC<HeaderComponentsProps> = (props :any) => {
 	);
 };
 
-export default Header;
+Header.displayName = 'Meama.Header';
+export default memo<HeaderProps>(Header);
