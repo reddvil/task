@@ -47,7 +47,6 @@ const ProductsSection = ({
 							product={ product }
 						/>
 					)) }
-					<div className="white-space"></div>
 				</ScrollContainer>
 			</div>
 		</div>
