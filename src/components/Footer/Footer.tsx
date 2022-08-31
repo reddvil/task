@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 // CSS
 import { useApi } from 'hooks';
 import { IContactInfo } from 'types';
@@ -8,23 +8,24 @@ type FooterProps = {
 	language?: string
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Footer = ({ language }: FooterProps) => {
 
-	const { data: social } = useApi<IContactInfo>('https://cms.meamacollect.ge/meama-collect/api/client/ka/contact-info');
+	const { data: social } = useApi<IContactInfo>('/ka/contact-info');
 
 	return (
-		<div className="footer-component">
+		<div className="footer">
 			<div className="container">
-				<div className="inner">
+				<div className="footer__wrapper">
 					<div className="row no-gutters">
-						<div className="col-6 d-flex align-items-end">
+						<div className="col-6 flex items-end">
 							<div>
 								<p>{ social?.name }</p>
 								<a className="phone f-bold" href={ 'tel:' + social?.value }>{ social?.value }</a>
 							</div>
 						</div>
-						<div className="col-6 d-flex align-items-end justify-content-end">
-							<div className="socials">
+						<div className="col-6 flex items-end content-end">
+							<div className="footer_socials">
 								{ social?.socialLinks.map((o, index) => {
 									return(
 										<a key={ index } href={ o.link } target="_blank" rel="noreferrer">
@@ -41,4 +42,5 @@ const Footer = ({ language }: FooterProps) => {
 	);
 };
 
-export default Footer;
+Footer.displayName = 'Meama.Footer';
+export default memo<FooterProps>(Footer);
