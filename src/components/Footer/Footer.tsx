@@ -17,15 +17,15 @@ const Footer = ({ language }: FooterProps) => {
 		<div className="footer">
 			<div className="container">
 				<div className="footer__wrapper">
-					<div className="row no-gutters">
-						<div className="col-6 flex items-end">
+					<div className="flex justify-between">
+						<div className="flex items-end">
 							<div>
 								<p>{ social?.name }</p>
 								<a className="phone f-bold" href={ 'tel:' + social?.value }>{ social?.value }</a>
 							</div>
 						</div>
-						<div className="col-6 flex items-end content-end">
-							<div className="footer_socials">
+						<div className="flex items-end content-end">
+							<div className="footer__socials">
 								{ social?.socialLinks.map((o, index) => {
 									return(
 										<a key={ index } href={ o.link } target="_blank" rel="noreferrer">
