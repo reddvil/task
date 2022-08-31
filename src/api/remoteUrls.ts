@@ -1,7 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const prefix = process.env.PUBLIC_URL || '';
 
 export const MEAMAURL = {
-	productsKa: `${prefix}/ka`,
-	langs: `${prefix}/languages`,
-	contactKa: `${prefix}/ka/contact-info`
+	baseURL: 'https://cms.meamacollect.ge/meama-collect/api/client'
 };
