@@ -1,47 +1,38 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ICategory } from 'types';
-
-// CSS
-// import './ProductsHeadlineComponent.css';
+import { mergeClasses } from 'utils';
+import './productsHeadline.scss';
 
 interface ComponentProps {
 	productCategory: ICategory,
-	categoryClicked?: (category: ICategory) => void
+	activeCategory: ICategory,
+	setCurrentCategory?: (category: ICategory) => void
 }
 
 const ProductsHeadline = ({
 	productCategory,
-	categoryClicked
+	activeCategory,
+	setCurrentCategory
 }: ComponentProps) => {
-
-	const subCategoryClicked = (productCategory: ICategory) => {
-
-		if(categoryClicked){
-			categoryClicked(productCategory);
-		}
-	};
 
 	return (
 		<div className="products-headline">
 			<h2 className="f-lgv">{ productCategory.name }</h2>
-			{
-				productCategory.subCategories ?
-					(
-						<div className="filter">
-							{ productCategory?.subCategories?.map(subCategory => (
-								<div
-									key={ subCategory.id }
-									className="active item"
-									onClick={ () => subCategoryClicked(subCategory) }
-								>
-									{ subCategory.name }
-								</div>
-							)) }
+			{ productCategory.subCategories && (
+				<div className="products-headline__filter">
+					{ productCategory?.subCategories?.map(subCategory => (
+						<div
+							key={ subCategory.id }
+							className={ mergeClasses('item', { active: subCategory.id === activeCategory.id }) }
+							onClick={ () => setCurrentCategory?.(subCategory) }
+						>
+							{ subCategory.name }
 						</div>
-					): (<></>)
-			}
+					)) }
+				</div> ) }
 		</div>
 	);
 };
 
-export default ProductsHeadline;
+ProductsHeadline.displayName = 'Meama.Products.Headline';
+export default memo<ComponentProps>(ProductsHeadline);
