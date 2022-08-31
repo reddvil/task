@@ -1,1 +1,1 @@
-export { mergeClasses } from './common';
+export { mergeClasses, isEmpty } from './common';
