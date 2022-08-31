@@ -1,9 +1,9 @@
-.footer-component {
+.footer {
 	margin-top: 40px;
 	transition: transform .8s cubic-bezier(0.51, 0.36, 0.22, 1), opacity .8s;
-	.inner {
+	.footer__wrapper {
 		border-top: 1px solid rgba(112, 112, 112, 0.1);
-		padding: 20px 0 35px 0px;
+		padding: 20px 0 35px 0;
 		p {
 			font-size: 14px;
 			color: rgba(0, 0, 0, 0.5);
@@ -12,7 +12,7 @@
 			font-size: 20px;
 			color: #000;
 		}
-		.socials {
+		.footer__socials {
 			position: relative;
 			top: -9px;
 			a {
@@ -28,7 +28,7 @@
 }
 
 body.visible-product-detail {
-	.footer-component {
+	.footer {
 		transform: translateY(-100px);
 		opacity: 0;
 	}
