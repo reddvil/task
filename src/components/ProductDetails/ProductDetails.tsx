@@ -30,7 +30,6 @@ const ProductDetails = () => {
 		<div className="product-details">
 			<div className="app-container">
 				<div className="container">
-
 					<div className="top">
 						<div className="row">
 							<div className="col-6 flex items-center">
@@ -41,19 +40,17 @@ const ProductDetails = () => {
 						</div>
 						{
 							isLoading? (<SkeletonLoader/>)
-								:( <React.Fragment>
+								: (<React.Fragment>
 									<div className="info-section">
 										<div className="row">
 											<div className="col-6">
 												<div className={ currentProduct?.type == 'DEFAULT' ? 'type default' : 'type' }>
-													{
-
-														currentProduct && (
-															<div>
-																<img className="icon" src={ '' } alt=""/>
-																<span className={ currentProduct?.type == 'COLD' ? 'cold' : 'hot' }>{ t(currentProduct?.type) }</span>
-															</div>
-														)
+													{ currentProduct && (
+														<div>
+															<img className="icon" src={ '' } alt=""/>
+															<span className={ currentProduct?.type == 'COLD' ? 'cold' : 'hot' }>{ t(currentProduct?.type) }</span>
+														</div>
+													)
 													}
 												</div>
 												<h2 className="f-lgv">{ currentProduct?.name }</h2>
@@ -69,28 +66,22 @@ const ProductDetails = () => {
 																<p>{ o.value }</p>
 															</React.Fragment>))
 													}
-
 												</div>
 												{
-													currentProduct? (
-														currentProductAllImages()?.length >= 2 ? (
+													currentProduct && (
+														currentProductAllImages()?.length >= 2 && (
 															<div className="small-imgs flex">
-																{
-																	currentProductAllImages()?.map((o,i)=>(
-																		<div
-																			key={ i }
-																			onClick={ ()=> setImgSelectedIndexState(i) }
-																			className={ 'img flex items-center justify-center '+(i==imgSelectedIndexState ?'active':'') }
-																		>
-																			<img src={ o } alt=""/>
-																		</div>
-																	))
-																}
-															</div>
-														):(
-															<></>
-														)
-													):<></>
+																{ currentProductAllImages()?.map((o,i)=>(
+																	<div
+																		key={ i }
+																		onClick={ ()=> setImgSelectedIndexState(i) }
+																		className={ 'img flex items-center justify-center '+(i==imgSelectedIndexState ?'active':'') }
+																	>
+																		<img src={ o } alt=""/>
+																	</div>
+																)) }
+															</div> )
+													)
 												}
 											</div>
 											<div className="col-6">
@@ -98,11 +89,9 @@ const ProductDetails = () => {
 													<div className="bg" style={ { backgroundColor: currentProduct?.bgColor } }></div>
 													<div className="img-box">
 														<div className="img">
-															{
-																currentProductAllImages()?.map((o,i)=>(
-																	<img key={ i } className={ mergeClasses({ active: i === imgSelectedIndexState }) } src={ o } alt=""/>
-																))
-															}
+															{ currentProductAllImages()?.map((o,i)=>(
+																<img key={ i } className={ mergeClasses({ active: i === imgSelectedIndexState }) } src={ o } alt=""/>
+															)) }
 														</div>
 													</div>
 												</div>
@@ -110,9 +99,7 @@ const ProductDetails = () => {
 										</div>
 									</div>
 									<div className="bottom">
-										{
-											currentProduct?.shortDescription && <div className="border-line"></div>
-										}
+										{ currentProduct?.shortDescription && <div className="border-line"></div> }
 									</div>
 								</React.Fragment>
 								)
