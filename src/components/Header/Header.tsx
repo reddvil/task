@@ -5,14 +5,11 @@ import React, { memo } from 'react';
 // CSS
 import './header.scss';
 
-import logoSrc from 'assets/logo.svg';
-// import { Language } from '../../models/Language';
-// import { useTranslation } from 'react-i18next';
+import { ReactComponent as MeamaLogo } from 'assets/logo.svg';
 import { useApi } from 'hooks';
 
 type HeaderProps = {
 	languageClicked?: () => void;
-	// languages:Language[]
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -20,7 +17,6 @@ const Header = (props: HeaderProps) => {
 
 	const { data: backgroundImage } = useApi<string>('/get-background-image');
 	const headerBg = { backgroundImage: 'url('+ backgroundImage + ')' };
-	// const {t} = useTranslation();
 
 	return (
 		<div className="header">
@@ -31,7 +27,7 @@ const Header = (props: HeaderProps) => {
 				<div className="flex">
 					<div className="flex items-start" style={ {zIndex:999} }>
 						<div className="header__logo">
-							<img src={ logoSrc } alt=""/>
+							<MeamaLogo/>
 						</div>
 					</div>
 					<div className="flex items-start justify-end">
