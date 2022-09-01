@@ -1,5 +1,4 @@
-import React, {memo} from 'react';
-// CSS
+import React, { memo } from 'react';
 import { useApi } from 'hooks';
 import { IContactInfo } from 'types';
 import './footer.scss';
@@ -21,15 +20,15 @@ const Footer = ({ language }: FooterProps) => {
 						<div className="flex items-end">
 							<div>
 								<p>{ social?.name }</p>
-								<a className="phone f-bold" href={ 'tel:' + social?.value }>{ social?.value }</a>
+								<a className="phone font-bold" href={ 'tel:' + social?.value }>{ social?.value }</a>
 							</div>
 						</div>
 						<div className="flex items-end content-end">
 							<div className="footer__socials">
-								{ social?.socialLinks.map((o, index) => {
+								{ social?.socialLinks.map((el, index) => {
 									return(
-										<a key={ index } href={ o.link } target="_blank" rel="noreferrer">
-											<img src={ o.imageUrl } alt="footerImg"/>
+										<a key={ index } href={ el.link } target="_blank" rel="noreferrer">
+											<img src={ el.imageUrl } alt="footerImg"/>
 										</a>
 									);
 								}) }

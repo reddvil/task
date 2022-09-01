@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { IProduct } from 'types';
 import { SkeletonLoader } from 'components';
 import { useApi } from 'hooks';
@@ -13,7 +12,6 @@ const ProductDetails = () => {
 	const [ selectedImageIndex, setSelectedImageIndex ] = useState(0);
 
 	const navigate = useNavigate();
-	const { t } = useTranslation();
 	const { slug } = useParams();
 
 	const { data: currentProduct, isLoading } = useApi<IProduct>(`ka/product/${slug}`);
@@ -67,7 +65,7 @@ const ProductDetails = () => {
 													{ currentProduct && (
 														<div>
 															<img className="icon" src={ '' } alt=""/>
-															<span className={ currentProduct?.type == 'COLD' ? 'cold' : 'hot' }>{ t(currentProduct?.type) }</span>
+															<span className={ currentProduct?.type == 'COLD' ? 'cold' : 'hot' }>{ currentProduct?.type }</span>
 														</div>
 													)
 													}
@@ -88,20 +86,20 @@ const ProductDetails = () => {
 													currentProduct && (
 														currentProductImages()?.length >= 2 && (
 															<div className="product-details__images-small flex">
-																{ currentProductImages()?.map((o,i)=>(
+																{ currentProductImages()?.map((img,i)=>(
 																	<div
 																		key={ i }
 																		onClick={ ()=> setSelectedImageIndex(i) }
 																		className={ mergeClasses('product-details__img flex items-center justify-center', { active: selectedImageIndex === i }) }
 																	>
-																		<img src={ o } alt=""/>
+																		<img src={ img } alt=""/>
 																	</div>
 																)) }
 															</div> )
 													)
 												}
 											</div>
-											<div className="grid">
+											<div className="block">
 												<div className="product-details__imgs-cont flex items-center justify-center">
 													<div className="bg" style={ { backgroundColor: currentProduct?.bgColor } }></div>
 													<div className="product-details__img-box">

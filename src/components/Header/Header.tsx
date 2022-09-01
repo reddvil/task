@@ -1,8 +1,4 @@
 import React, { memo } from 'react';
-// import LangButtonComponent from '../langButton/LangButtonComponent';
-// import { Link } from 'react-router-dom';
-
-// CSS
 import './header.scss';
 
 import { ReactComponent as MeamaLogo } from 'assets/logo.svg';
@@ -31,7 +27,7 @@ const Header = (props: HeaderProps) => {
 						</div>
 					</div>
 					<div className="flex items-start justify-end">
-						<button className="lang">Lang Btn</button>
+						<button className="lang">lang</button>
 					</div>
 				</div>
 			</div>
