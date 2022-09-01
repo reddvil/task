@@ -9,9 +9,9 @@ const NotFound =  () => {
 		<React.Fragment>
 			<div className="not-found">
 				<div className="container">
-					<h2 className="f-lgv">ოპააა...</h2>
+					<h2 className="font-medium">ოპააა...</h2>
 					<p>გვერდი ვერ მოიზებნა</p>
-					<Link to={ '/' } className="button">გვერდი ვერ მოიძებნა</Link>
+					<Link to={ '/' } className="button">მთავარ გვერდზე გადასვლა</Link>
 				</div>
 			</div>
 		</React.Fragment>
