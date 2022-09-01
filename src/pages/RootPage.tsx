@@ -1,9 +1,9 @@
 import React from 'react';
-import { useApi } from 'hooks';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Header, ProductsSection, SkeletonLoader, Footer } from 'components';
+import { useApi } from 'hooks';
 import { mergeClasses } from 'utils';
 import { ICategory, IProduct } from 'types';
-import { useNavigate } from 'react-router-dom';
 
 function RootPage() {
 
@@ -27,6 +27,7 @@ function RootPage() {
 					/>
 				))
 			) }
+			<Outlet/>
 			{ error && <div>Error</div> }
 			<Footer/>
 		</React.Fragment>
