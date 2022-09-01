@@ -2,11 +2,11 @@ import React, { memo } from 'react';
 import { mergeClasses } from 'utils';
 import { CategoryKind, IProduct } from 'types';
 
-// icons
+// ICONS
 import hotDrink from 'assets/hotDrink.svg';
 import coldDrink from 'assets/coldDrink.svg';
 
-//css
+//CSS
 import './productItem.scss';
 
 interface ComponentProps {

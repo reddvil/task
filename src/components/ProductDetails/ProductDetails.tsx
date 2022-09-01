@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useEffect, useState} from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { IProduct } from 'types';
@@ -18,7 +18,7 @@ const ProductDetails = () => {
 
 	const { data: currentProduct, isLoading } = useApi<IProduct>(`ka/product/${slug}`);
 
-	const currentProductAllImages = useCallback(() => {
+	const currentProductImages = useCallback(() => {
 		if(currentProduct?.otherImages) {
 			return currentProduct?.imgUrls.concat(currentProduct?.otherImages);
 		}
@@ -48,10 +48,10 @@ const ProductDetails = () => {
 	return (
 		<div className="product-details">
 			<div className="app-container">
-				<div className="container">
-					<div className="top">
-						<div className="row">
-							<div className="col-6 flex items-center">
+				<div className="container product-details__wrapper">
+					<div className="product-details__upper">
+						<div className="block">
+							<div className="flex items-center">
 								<div onClick={ goBack } className="back-arrow">
 									<img src={ backArrow } alt=""/>
 								</div>
@@ -60,9 +60,9 @@ const ProductDetails = () => {
 						{
 							isLoading? (<SkeletonLoader/>)
 								: (<React.Fragment>
-									<div className="info-section">
-										<div className="row">
-											<div className="col-6">
+									<div className="product-details__info-section">
+										<div className="grid">
+											<div className="grid-cols-6">
 												<div className={ currentProduct?.type == 'DEFAULT' ? 'type default' : 'type' }>
 													{ currentProduct && (
 														<div>
@@ -72,29 +72,27 @@ const ProductDetails = () => {
 													)
 													}
 												</div>
-												<h2 className="f-lgv">{ currentProduct?.name }</h2>
+												<h2 className="font-medium">{ currentProduct?.name }</h2>
 												{
 													currentProduct?.price &&
-												<div className="price">{ currentProduct?.price }&#8382;</div>
+												<div className="product-details__price">{ currentProduct?.price }&#8382;</div>
 												}
-												<div className="specifications">
-													{
-														currentProduct?.specifications?.map((o, index)=>(
-															<React.Fragment key={ index }>
-																<span>{ o.name }</span>
-																<p>{ o.value }</p>
-															</React.Fragment>))
-													}
+												<div className="product-details__specifications">
+													{ currentProduct?.specifications?.map((o, index)=>(
+														<React.Fragment key={ index }>
+															<span>{ o.name }</span>
+															<p>{ o.value }</p>
+														</React.Fragment>)) }
 												</div>
 												{
 													currentProduct && (
-														currentProductAllImages()?.length >= 2 && (
-															<div className="small-imgs flex">
-																{ currentProductAllImages()?.map((o,i)=>(
+														currentProductImages()?.length >= 2 && (
+															<div className="product-details__images-small flex">
+																{ currentProductImages()?.map((o,i)=>(
 																	<div
 																		key={ i }
 																		onClick={ ()=> setSelectedImageIndex(i) }
-																		className={ mergeClasses('img flex items-center justify-center', { active: selectedImageIndex === i }) }
+																		className={ mergeClasses('product-details__img flex items-center justify-center', { active: selectedImageIndex === i }) }
 																	>
 																		<img src={ o } alt=""/>
 																	</div>
@@ -103,12 +101,12 @@ const ProductDetails = () => {
 													)
 												}
 											</div>
-											<div className="block">
-												<div className="imgs-cont flex items-center justify-center">
+											<div className="grid">
+												<div className="product-details__imgs-cont flex items-center justify-center">
 													<div className="bg" style={ { backgroundColor: currentProduct?.bgColor } }></div>
-													<div className="img-box">
-														<div className="img">
-															{ currentProductAllImages()?.map((o,i)=>(
+													<div className="product-details__img-box">
+														<div className="product-details__img">
+															{ currentProductImages()?.map((o,i)=>(
 																<img key={ i } className={ mergeClasses({ active: selectedImageIndex === i }) } src={ o } alt=""/>
 															)) }
 														</div>
@@ -117,7 +115,7 @@ const ProductDetails = () => {
 											</div>
 										</div>
 									</div>
-									<div className="bottom">
+									<div className="product-details__bottom">
 										{ currentProduct?.shortDescription && <div className="border-line"></div> }
 									</div>
 								</React.Fragment>
