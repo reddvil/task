@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, {memo, useCallback, useEffect, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { IProduct } from 'types';
@@ -10,7 +10,7 @@ import backArrow from 'assets/backIcon.svg';
 import { mergeClasses } from 'utils';
 
 const ProductDetails = () => {
-	const [ imgSelectedIndexState, setImgSelectedIndexState ] = useState(0);
+	const [ selectedImageIndex, setSelectedImageIndex ] = useState(0);
 
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -18,13 +18,32 @@ const ProductDetails = () => {
 
 	const { data: currentProduct, isLoading } = useApi<IProduct>(`ka/product/${slug}`);
 
-	const currentProductAllImages = () => {
-
-		if(currentProduct?.otherImages){
+	const currentProductAllImages = useCallback(() => {
+		if(currentProduct?.otherImages) {
 			return currentProduct?.imgUrls.concat(currentProduct?.otherImages);
 		}
 		return currentProduct?.imgUrls ?? [];
-	};
+	}, [currentProduct]);
+
+	const goBack = useCallback(() => {
+		document.getElementsByTagName('body')[0].classList.remove('visible-product-detail');
+		document.querySelector('.product-details')?.classList.remove('visible');
+		setTimeout(() => {
+			navigate(-1);
+		}, 500);
+	},[navigate]);
+
+	useEffect(() => {
+		setTimeout(() => {
+			document.getElementsByTagName('body')[0].classList.add('visible-product-detail');
+			document.querySelector('.product-details')?.classList.add('visible');
+		}, 0);
+		return () => {
+			document.getElementsByTagName('body')[0].classList.remove('visible-product-detail');
+			document.querySelector('.product-details')?.classList.remove('visible');
+		};
+		// renew classes on slug change
+	}, [slug]);
 
 	return (
 		<div className="product-details">
@@ -33,7 +52,7 @@ const ProductDetails = () => {
 					<div className="top">
 						<div className="row">
 							<div className="col-6 flex items-center">
-								<div onClick={ () => navigate(-1) } className="back-arrow">
+								<div onClick={ goBack } className="back-arrow">
 									<img src={ backArrow } alt=""/>
 								</div>
 							</div>
@@ -74,8 +93,8 @@ const ProductDetails = () => {
 																{ currentProductAllImages()?.map((o,i)=>(
 																	<div
 																		key={ i }
-																		onClick={ ()=> setImgSelectedIndexState(i) }
-																		className={ 'img flex items-center justify-center '+(i==imgSelectedIndexState ?'active':'') }
+																		onClick={ ()=> setSelectedImageIndex(i) }
+																		className={ mergeClasses('img flex items-center justify-center', { active: selectedImageIndex === i }) }
 																	>
 																		<img src={ o } alt=""/>
 																	</div>
@@ -90,7 +109,7 @@ const ProductDetails = () => {
 													<div className="img-box">
 														<div className="img">
 															{ currentProductAllImages()?.map((o,i)=>(
-																<img key={ i } className={ mergeClasses({ active: i === imgSelectedIndexState }) } src={ o } alt=""/>
+																<img key={ i } className={ mergeClasses({ active: selectedImageIndex === i }) } src={ o } alt=""/>
 															)) }
 														</div>
 													</div>
