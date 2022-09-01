@@ -103,7 +103,7 @@ const ProductDetails = () => {
 													)
 												}
 											</div>
-											<div className="col-6">
+											<div className="block">
 												<div className="imgs-cont flex items-center justify-center">
 													<div className="bg" style={ { backgroundColor: currentProduct?.bgColor } }></div>
 													<div className="img-box">
