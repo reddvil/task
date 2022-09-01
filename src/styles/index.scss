@@ -1,7 +1,6 @@
 @import 'normalize';
 @import 'fonts';
 @import "variables";
-@import 'layout';
 
 //tailwind
 
@@ -44,96 +43,3 @@ body {
 	padding: 30px 20px 15px;
 	margin: 10px -25px 0;
 }
-
-//Skeleton
-
-.shimmer {
-	position: relative;
-	margin-top: 40px;
-	opacity: 1;
-	transform: translateY(20px);
-	transition: opacity .5s, transform .5s;
-}
-
-body.animating .shimmer {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-.shimmer .title {
-	height: 33px;
-	width: 150px;
-	border-radius: 33px;
-}
-
-.shimmer .items {
-	position: relative;
-	overflow: hidden;
-	white-space: nowrap;
-	margin: 40px -25px 0 -5px;
-}
-
-.shimmer .items .item {
-	display: inline-block;
-	margin: 0 5px 15px 5px;
-	border-radius: 10px;
-	width: 130px;
-	height: 159px;
-}
-
-.shimmer .items .item.large {
-	width: 156px;
-	height: 201px;
-}
-
-.shimmer .filter {
-	position: relative;
-	overflow: hidden;
-	white-space: nowrap;
-	margin: 12px 0 -7px 0;
-}
-
-.shimmer .filter .item {
-	display: inline-block;
-	margin-right: 8px;
-	border-radius: 30px;
-	width: 80px;
-	height: 30px;
-}
-
-.shimmer .shimmer-animation-el {
-	animation: shimmerAnimation 2.5s infinite linear;
-	background: linear-gradient(to right, #f8f8f8 0%, #e5e5e5 30%, #f8f8f8 42%);
-	background-size: 1000px 100%;
-}
-
-.shimmer .shimmer-animation-el-1 { animation-delay: 0s; }
-.shimmer .shimmer-animation-el-2 { animation-delay: .05s; }
-.shimmer .shimmer-animation-el-3 { animation-delay: .1s; }
-.shimmer .shimmer-animation-el-4 { animation-delay: .15s; }
-.shimmer .shimmer-animation-el-5 { animation-delay: .2s; }
-.shimmer .shimmer-animation-el-6 { animation-delay: .25s; }
-.shimmer .shimmer-animation-el-7 { animation-delay: .2s; }
-.shimmer .shimmer-animation-el-8 { animation-delay: .25s; }
-.shimmer .shimmer-animation-el-9 { animation-delay: .3s; }
-.shimmer .shimmer-animation-el-10 { animation-delay: .35s; }
-.shimmer .shimmer-animation-el-11 { animation-delay: .4s; }
-.shimmer .shimmer-animation-el-12 { animation-delay: .45s; }
-.shimmer .shimmer-animation-el-13 { animation-delay: .5s; }
-.shimmer .shimmer-animation-el-14 { animation-delay: .55s; }
-.shimmer .shimmer-animation-el-15 { animation-delay: .6s; }
-
-@keyframes shimmerAnimation {
-	from {
-		background-position: -1000px 0;
-	}
-	to {
-		background-position: 1000px 0;
-	}
-}
-
-
-
-
-
-
