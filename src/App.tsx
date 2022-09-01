@@ -9,8 +9,9 @@ function App() {
 		<div className="App">
 			<div className="app-container">
 				<Routes>
-					<Route path="/" element={ <RootPage/> }/>
-					<Route path="/product/:slug" element={ <ProductDetails/> }/>
+					<Route path="/" element={ <RootPage/> }>
+						<Route path="/product/:slug" element={ <ProductDetails/> }/>
+					</Route>
 					<Route path="/notfound" element={ <NotFound/> }/>
 					<Route path="*" element={ <NotFound/> }/>
 				</Routes>
